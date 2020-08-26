@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8" type="application/javascript">
+    <title>User panel</title>
+    <link rel="stylesheet" type="text/css" th:href="@{~/css/menu.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<div th:insert=" menu.html :: div"></div>
+<div class="container">
+
+    <div class="alert alert-success">
+        <strong>Edit Product</strong>
+
+    </div>
+
+
+
+<form action="#"
+      th:action="@{/product/edit/{id}(id=${product.id})}"
+      th:object="${product}"
+      method="post">
+
+    <label for="name">Name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="Name" required>
+
+    <label for="photo">Photo</label>
+    <input type="text" th:field="*{photo}" id="photo" placeholder="Photo" required>
+
+    <label for="price">Price</label>
+    <input type="text" th:field="*{price}" id="price" placeholder="Price" required>
+
+
+
+    <input type="submit" value="Add Product">
+</form>
+</div>
+</body>
+
+
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html xmlns:th="http://ww.thymeleaf.org">
+<head>
+    <title>User panel</title>
+    <link rel="stylesheet" type="text/css" href="resources/static/css/menu.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+</head>
+
+<body>
+<div th:insert="menu.html :: div"></div>
+
+<h1>Selected Company</h1>
+
+
+<form action="#"
+      th:action="@{/select/{id}(id=${company.id})}"
+      th:object="${company}"
+      method="post">
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Id</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+
+            <td th:text=" ${company.name}"></td>
+            <td th:text=" ${company.city}"></td>
+            <td th:text=" ${company.id}"></td>
+        </tr>
+        </tbody>
+    </table>
+<br>
+
+</form>
+    <h1>Pleas add product to an order.</h1>
+
+<form action="#"
+      th:action="@{/select/{id}(id=${company.id})}"
+      th:object="${product}"
+      method="post">
+<!--Nowa tabela-->
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+
+            <th>Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Quantity</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.category}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.image}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.discount}"></td>
+            <td th:text="${product.quantity}"></td>
+
+
+
+<!--            <td><input th:text="${discount}" required></td>-->
+<!--            <td><input th:text="${quantity}" required></td>-->
+
+<!--            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>-->
+
+
+        </tr>
+        </tbody>
+    </table>
+
+    <input type="submit" value="Submit">
+
+    <button class="button" type="submit">Wyślij</button>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>

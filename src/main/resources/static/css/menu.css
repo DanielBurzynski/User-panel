@@ -1,0 +1,35 @@
+:root{
+    --main-color:whitesmoke;
+
+}
+
+body{
+    margin:0;
+
+}
+
+.menu{
+    display:flex;
+     flex-direction: row;
+    background-color:var(--main-color);
+    justify-content: flex-end;
+
+}
+
+.menu-element{
+    padding:10px 5px 10px 5px;
+    text-decoration: none;
+    color:#007bb5;
+    font-size: 20px;
+}
+
+
+.menu-separator-v {
+    border-left: 1px solid #007bb5;
+
+
+}
+.unstyled-button{
+border:none;
+    background:none;
+}

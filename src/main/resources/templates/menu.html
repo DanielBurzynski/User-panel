@@ -1,0 +1,44 @@
+
+<div class="menu" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <div class="menu-separator-v"></div>
+
+    <a class="menu-element"> User:</a>
+    <a class="menu-element" sec:authorize="isAuthenticated()" sec:authentication="name"></a>
+
+    <div class="menu-separator-v"></div>
+    <a class="menu-element" href="/cart/index">Order</a>
+
+    <div class="menu-separator-v"></div>
+    <a class="menu-element" href="/product">Products</a>
+
+    <div class="menu-separator-v"></div>
+    <a class="menu-element" href="/list">Companies</a>
+
+    <div class="menu-separator-v"></div>
+    <a class="menu-element" href="/message">Message</a>
+
+    <div class="menu-separator-v"></div>
+
+    <a class="menu-element" href="/user_panel">User Panel</a>
+
+    <div sec:authorize="hasAuthority('ADMIN')" class="menu-separator-v"></div>
+    <a sec:authorize="hasAuthority('ADMIN')" class="menu-element" href="/admin_panel">Admin Panel</a>
+
+    <div class="menu-separator-v"></div>
+
+    <form action="logout" method="post">
+
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+        <button class="menu-element unstyled-button" type="submit">Logout</button>
+
+    </form>
+
+
+
+
+
+
+</div>
+

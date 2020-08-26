@@ -1,0 +1,50 @@
+
+
+label{
+    display: block;
+    font-size: medium;
+    text-align: center;
+    color: black;
+    position: center;
+
+}
+textarea{
+    width: 50%;
+    height: 400px;
+    display: block;
+    text-align: left;
+    margin: auto;
+}
+.button{
+    display: block;
+    padding: 10px;
+    margin:auto;
+    border-radius: 5px;
+    background-color: white;
+}
+.button:hover{
+    background-color: black;
+    color:white;
+
+    transition: 0.5s ease-in-out;
+}
+.tit{
+    width: 50%;
+    display: block;
+    margin:auto;
+    margin-bottom: 3%;
+}
+input{
+
+    display: block;
+    margin:auto;
+
+}
+
+.par-val{
+    display: block;
+    color:#bb0000;
+    font-weight: bold;
+    margin:auto;
+}
+

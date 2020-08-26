@@ -1,0 +1,109 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>User panel</title>
+    <link rel="stylesheet" type="text/css" th:href="@{~/css/menu.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<div th:insert="menu.html :: div"></div>
+
+
+<div class="container">
+
+    <div class="alert alert-success">
+        <strong>Add new product </strong>
+        <a th:href="@{/addproduct}">Click here</a>
+
+    </div>
+
+    <div class="alert alert-success">
+        <strong>Order List</strong>
+
+    </div>
+
+
+    <!--Nowa tabela-->
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Delete</th>
+            <th>
+                <a th:href="@{'/product/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}"> Id</a>
+            </th>
+
+            <th>
+                <a th:href="@{'/product/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}"> Name</a>
+            </th>
+
+            <th>
+                <a th:href="@{'/product/' + ${currentPage} + '?sortField=brand&sortDir=' + ${reverseSortDir}}">Photo</a>
+            </th>
+
+            <th>
+                <a th:href="@{'/product/' + ${currentPage} + '?sortField=price&sortDir=' + ${reverseSortDir}}"> Price</a>
+            </th>
+            <th>Edit</th>
+            <th>Buy</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td><a th:href="@{/addproduct/delete/{id}(id=${product.id})}" onclick="return confirm('Are you sure?')">Delete</a></td>
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+         <td><img th:src="@{'images/'+${product.photo}}"/></td>
+            <td th:text="${product.price}"></td>
+            <td><a th:href="@{/product/edit/{id}(id=${product.id})}">Edit</a></td>
+            <td><a th:href="@{/cart/buy/{id}(id=${product.id})}">Buy Now</a></td>
+
+        </tr>
+
+        </tbody>
+    </table>
+
+
+
+<div class="alert-success justify-content-around align-content-center align-content-sm-center">
+<div>&nbsp;</div>
+<div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
+<div>&nbsp;</div>
+<div th:if="${totalPages > 1}">
+    Total Items: [[${totalItems}]]
+    &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
+
+    <a th:if="${currentPage > 1}" th:href="@{'/product/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
+    <span th:unless="${currentPage > 1}">First</span>
+    &nbsp;&nbsp;
+
+    <a th:if="${currentPage > 1}" th:href="@{'/product/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
+    <span th:unless="${currentPage > 1}">Previous</span>
+
+    &nbsp;&nbsp;
+
+    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+			<a th:if="${currentPage != i}" th:href="@{'/product/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+			<span th:unless="${currentPage != i}">[[${i}]]</span>
+			&nbsp;
+		</span>
+
+    <a th:if="${currentPage < totalPages}" th:href="@{'/product/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+    <span th:unless="${currentPage < totalPages}">Next</span>
+    &nbsp;&nbsp;
+
+    <a th:if="${currentPage < totalPages}" th:href="@{'/product/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+    <span th:unless="${currentPage < totalPages}">Last</span>
+</div>
+</div>
+</div>
+</body>
+
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About me</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="js/ap.js"></script>
+
+
+</head>
+<header>
+
+</header>
+
+
+<body>
+
+
+
+
+    <div class="slider-top">
+        <div id="slider">
+            <figure>
+                <img src="graphic/java-oracle.png">
+                <img src="graphic/spring.png">
+                <img src="graphic/javascript.png">
+                <img src="graphic/java-oracle4.png">
+                <img src="graphic/github.png">
+            </figure>
+        </div>
+    </div>
+
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+
+        <a class="navbar-brand" href="/index">Home</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/about_me">About me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/news">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/books">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/technologies">Technologies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user_panel">Sign in</a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+
+    <!-- The social media icon bar -->
+    <div class="icon-bar">
+        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="google"><i class="fa fa-google"></i></a>
+        <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+        <a href="#" class="youtube"><i class="fa fa-youtube"></i></a>
+    </div>
+
+
+    <div class="container-fluid">
+        <!-- Control the column width, and how they should appear on different devices -->
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="container">
+
+                    <h4>Skontaktuj się ze mna poprzez formularz.Twoja wiadomość zostanie wysłana na moją skrzynkę email. </h4>
+
+
+
+                    <form id="myForm" action="contact" th:action="@{/contact}" th:object="${contact}" method="post">
+
+
+              <label>Tytuł wiadomości</label>
+              <label class="par-val" th:if="${#fields.hasErrors('title')}" th:errors="*{title}" >title Error</label>
+
+              <input  class="tit" type="text" th:field="*{title}" placeholder="Wpisz tytuł wiadomości" required/>
+
+             <label>Treść wiadomości</label>
+              <label class="par-val" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">content Error</label>
+
+             <textarea type="text" th:field="*{content}" placeholder="Wpisz wiadomość" required></textarea>
+
+                       <input type="submit" value="Submit">
+
+                        <button class="button" type="submit">Wyślij</button>
+                    </form>
+
+                    <script>
+                        document.getElementById("myForm").addEventListener("submit", myFunction);
+
+                        function myFunction() {
+                            alert("Wiadomość zostanie wysłana, dziękuję za kontakt ze mną. Postaram się odpowiedzieć najszybciej jak to tylko możliwe.");
+                        }
+                    </script>
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+            <br>
+        </div>
+    </div>
+
+    <div class="footer">
+
+
+        <div class="footer-content">
+            <div class="footer-section-motto">
+
+                <h3>Motto programisty</h3>
+                <p>"W teorii, teoria i praktyka są tym samym. W praktyce, nie są." - Yogi Berra</p><br>
+                <p>"Gadka jest tania. Pokaż mi kod!" - Linus Torvalds</p><br>
+
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            &copy; nazwa strony | Designe by Daniel Burzynski
+        </div>
+    </div>
+
+</body>
+</html>

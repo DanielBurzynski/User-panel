@@ -1,0 +1,39 @@
+.login-form {
+	display: flex;
+	flex-direction: column;
+	padding: 3%;
+	height: auto;
+	border-radius: 10%;
+	color:whitesmoke;
+	background-color: slategray;
+	box-shadow:3px 4px 4px  #dddddd;
+
+}
+
+.log{
+	margin:auto;
+	margin-top:10%;
+	min-width:25%;
+	min-height: 25%;
+}
+
+.login-element{
+	margin-right: auto;
+	margin-left: auto;
+	margin-top:8px;
+	margin-bottom: 8px;
+	max-width: 500px;
+}
+
+
+body{
+	background-color: #555555;
+}
+
+a {
+	color: whitesmoke;
+	font-weight: bold;
+	font-size: medium;
+}
+
+

@@ -1,0 +1,42 @@
+<!doctype html>
+<html xmlns:th="http://ww.thymeleaf.org">
+<head>
+    <title>Message Panel</title>
+    <link rel="stylesheet" type="text/css" th:href="@{~/css/menu.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="js/ap.js"></script>
+</head>
+
+<body>
+<div th:insert=" menu.html :: div"></div>
+
+<div class="container">
+    <div class="alert alert-success">
+        <strong>Send me a message</strong>
+
+    </div>
+
+<form id="myForm" action="message" th:action="@{/message}" th:object="${message}" method="post">
+
+    <p>Tytuł: <input type="text" th:field="*{title}" required> </p>
+    <p>Imie: <input type="text" th:field="*{name}" required> </p>
+    <p>Wiadomość <input type="text" th:field="*{message}" required> </p>
+    <button type="submit">Wyślij</button>
+
+
+
+</form>
+    <script>
+        document.getElementById("myForm").addEventListener("submit", myFunction);
+
+        function myFunction() {
+            alert("Wiadomość zostanie wysłana, dziękuję za kontakt ze mną. Postaram się odpowiedzieć najszybciej jak to tylko możliwe.");
+        }
+    </script>
+</div>
+
+</body>
+
+
+</html>

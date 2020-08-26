@@ -1,0 +1,97 @@
+<!doctype html>
+<html xmlns:th="http://ww.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <title>User panel</title>
+    <link rel="stylesheet" type="text/css" th:href="@{~/css/menu.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<div th:insert="menu.html :: div"></div>
+
+
+<div class="container">
+
+    <div class="alert alert-success">
+        <strong>Add Company </strong>
+        <a th:href="@{/list}">Click here</a>
+    </div>
+
+    <form action="#" th:action="@{/index}" th:object="${company}" method="post">
+
+        <table class="table table-bordered">
+
+            <thead>
+            <th>Name</th>
+            <th>City</th>
+
+            </thead>
+
+            <tbody>
+
+            <tr th:each="company : ${session.company}">
+
+                <td th:text="${company.name}"></td>
+                <td th:text="${company.city}"></td>
+
+            </tr>
+            </tbody>
+        </table>
+
+
+        <div class="alert alert-success">
+            <strong>Add Product List </strong>
+            <a th:href="@{/product}">Click here</a>
+        </div>
+    </form>
+
+    <form action="#" th:action="@{/index}" th:object="${item}" method="post">
+
+        <table class="table table-bordered">
+
+            <thead>
+            <th>Option</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Photo</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Sub Total</th>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="item : ${session.cart}">
+
+
+                <td><a th:href="@{/cart/remove/{id}(id=${item.product.id})}" onclick="return confirm('Are you sure?')">Remove</a>
+                </td>
+
+                <td th:text="${item.product.id}"></td>
+                <td th:text="${item.product.name}"></td>
+                <td><img src="/static/images/thumb1.gif" th:src="@{/static/images/${item.product.photo}}"/></td>
+                <td th:text="${item.product.price}"></td>
+                <td th:text="${item.quantity}"></td>
+                <td th:text="${item.product.price * item.quantity}"></td>
+
+            </tr>
+            <tr>
+                <td colspan="6" align="right">Sum</td>
+                <td th:text="${total}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </form>
+
+
+
+    <br>
+    <a th:href="@{/product}">Continue
+        Shopping</a>
+</body>
+</html>
