@@ -10,7 +10,7 @@ public class Message {
     @Size(min = 1,max = 140, message = "Wprowadź tytuł wiadomości")
     private String title;
     @NotBlank
-    @Size(min = 1,max = 140, message = "Wprowadź imię")
+    @Size(min = 1,max = 140, message = "Wprowadź swoje imie")
     private String name;
 
     private String email;
