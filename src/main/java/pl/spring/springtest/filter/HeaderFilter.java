@@ -22,7 +22,7 @@ public class HeaderFilter implements Filter {
 			throws IOException, ServletException {
 
 		HttpServletResponse newResponse = (HttpServletResponse) response;
-		newResponse.addHeader("DanielBurzynski", "Java junior developer");
+		newResponse.addHeader("DanielBurzynski", "Java");
 		chain.doFilter(request, newResponse);
 		
 		

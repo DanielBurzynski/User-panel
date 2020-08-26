@@ -1,8 +1,5 @@
 package pl.spring.springtest.Models;
 
-
-
-
 import pl.spring.springtest.entity.Product;
 
 import java.util.List;
